@@ -1,6 +1,10 @@
 # Git-Fingerprint
 Git Fingerprint is a web fingerprinting tool that attempts to scan a target based on the files a git repository by enumerating over all files ever found in the public web root and comparing cryptographic hashes of each commit, branch or tag in order to calculate the best possible match.
 
+## Requirements
+* Python 3.6+
+* A good CPU
+
 ## Usage
 
 ```
