@@ -217,7 +217,7 @@ if __name__ == "__main__":
         "Specifies the file which should be used for loading/saving the local cache. "
         "Default: .git-fingerprint.json")
 
-    parser.add_argument("-s", "--stfu", action="store_true", help=
+    parser.add_argument("-s", "--stfu", "--silent", action="store_true", help=
         "Enable silent mode and only display the output of the script.")
 
     parser.add_argument("-i", "--insecure", action="store_true", default=False, help=
