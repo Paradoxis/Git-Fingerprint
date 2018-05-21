@@ -5,6 +5,20 @@ Git Fingerprint is a web fingerprinting tool that attempts to scan a target base
 * Python 3.6+
 * A good CPU
 
+## Installation
+For local installation:
+```
+$ pip install git-fingerprint
+```
+
+For development installation:
+
+```
+$ pip install .
+```
+
+
+
 ## Usage
 
 ```
