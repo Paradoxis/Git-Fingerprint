@@ -71,7 +71,7 @@ optional arguments:
        Specifies the file which should be used for loading/saving the local
        cache. Default: .git-fingerprint.json
 
-  -s, --stfu
+  -s, --stfu, --silent
        Enable silent mode and only display the output of the script.
 
   -i, --insecure
