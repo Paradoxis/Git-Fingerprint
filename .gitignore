@@ -2,3 +2,6 @@ venv/
 .idea/
 .git-fingerprint.json
 **/*.pyc
+build/
+dist/
+git_fingerprint.egg-info
