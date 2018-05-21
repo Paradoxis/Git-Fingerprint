@@ -48,7 +48,7 @@ with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
 
 
 with io.open(os.path.join(here, 'git_fingerprint', '__init__.py'), encoding='utf-8') as init:
-    VERSION = re.search(r'__version__ = [\'"]([\d.]+)[\'"]', init.read()).group()
+    VERSION = re.search(r'__version__ = [\'"]([\d.]+)[\'"]', init.read()).group(1)
 
 
 # Load the package's __version__.py module as a dictionary.
