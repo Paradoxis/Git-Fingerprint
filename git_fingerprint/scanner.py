@@ -192,7 +192,7 @@ class Scanner:
                 if file_hash is not None:
                     tracker[file] = file_hash
                 if file_hash is None and file in tracker:
-                            del tracker[file]
+                    del tracker[file]
 
             yield head, tracker
 
