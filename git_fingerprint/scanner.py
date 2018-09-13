@@ -5,7 +5,7 @@ from multiprocessing.pool import ThreadPool
 from io import BytesIO
 from os import walk
 from os.path import join, relpath, isfile
-from collections import defaultdict
+from collections import defaultdict, Counter
 from traceback import format_tb
 from typing import Tuple, Set, List
 from shutil import copytree
@@ -121,7 +121,7 @@ class Scanner:
         Calculate all results and sort them
         :return: Sorted results by amount of valid hashes and total successful hits
         """
-        results = defaultdict(dict)
+        results = defaultdict(Counter)
         remote = {}
 
         for file, details in self.__files_remote.items():
@@ -139,7 +139,7 @@ class Scanner:
                 if file in files and details.get("hash") == files[file]:
                     results[head]["hashes"] += 1
 
-            results[head]["hashes"] = results[head]["hashes"] / (total_hits / 100)
+            results[head]["hashes"] = results[head]["hashes"] / ((total_hits / 100) or 1)
 
         return sorted(results.items(), key=lambda x: (
             x[1]["hashes"],

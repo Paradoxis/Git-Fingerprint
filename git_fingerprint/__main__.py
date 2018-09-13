@@ -201,7 +201,7 @@ def main():
     if args.format[0] == FORMAT_PLAIN:
         print("head, hashes, hits")
         for key, result in results:
-            print(",".join((key, result["hashes"], result["hits"])))
+            print(",".join((key, str(result["hashes"]), str(result["hits"]))))
 
     elif args.format[0] == FORMAT_JSON:
         json.dump(results, sys.stdout, indent=2)

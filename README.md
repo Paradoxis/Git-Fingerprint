@@ -17,8 +17,6 @@ For development installation:
 $ pip install .
 ```
 
-
-
 ## Usage
 
 ```

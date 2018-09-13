@@ -1,6 +1,6 @@
 GitPython==2.1.8
 requests==2.18.4
 tabulate==0.8.2
-axel=0.0.7
+axel==0.0.7
 progressbar2==3.34.3
 dicttoxml==1.7.4
