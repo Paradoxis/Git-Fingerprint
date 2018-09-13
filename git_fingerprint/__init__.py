@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from .scanner import Scanner
-from .exceptions import GitFingerprintException
-
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __author__ = "Luke Paris (Paradoxis) <luke@paradoxis.nl>"
+
+from git_fingerprint.scanner import Scanner
+from git_fingerprint.exceptions import GitFingerprintException

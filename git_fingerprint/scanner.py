@@ -14,8 +14,9 @@ import requests
 from axel import Event
 from git import Repo, GitCommandError
 
-from .helpers import OrderedDefaultDict, temporary_directory, chunks
-from .exceptions import GitFingerprintException
+from git_fingerprint import __version__
+from git_fingerprint.helpers import OrderedDefaultDict, temporary_directory, chunks
+from git_fingerprint.exceptions import GitFingerprintException
 
 
 class Scanner:
@@ -32,10 +33,12 @@ class Scanner:
     LOG_LEVEL_WARNING = "-"
     LOG_LEVEL_SUCCESS = "+"
 
+    DEFAULT_USER_AGENT = f"GitFingerprint/{__version__}"
+
     def __init__(self, url: str="", mode: str=MODE_BRANCH, webroot: str="",
                  git_repo_path: str= "", max_remote_threads: int=10,
                  max_local_threads: int=5, verify_ssl: bool=True, debug: bool=False,
-                 session: requests.Session=None):
+                 session: requests.Session=None, user_agent: str=None):
         """
         Scanner constructor
         :param url: Base url of the remote host
@@ -62,6 +65,7 @@ class Scanner:
         self._hashing_algorithm = "sha256"
         self.__hashing_interrupted = False
         self.__debug = debug
+        self.__user_agent = user_agent or self.DEFAULT_USER_AGENT
 
         self.on_log = Event()
         self.on_progress = Event()
@@ -188,7 +192,7 @@ class Scanner:
                 if file_hash is not None:
                     tracker[file] = file_hash
                 if file_hash is None and file in tracker:
-                    del tracker[file]
+                            del tracker[file]
 
             yield head, tracker
 
@@ -389,7 +393,10 @@ class Scanner:
         Make a (threaded) request to the server
         :param file: File we're going to request
         """
-        resp = self.__session.get(self.__url + file, allow_redirects=False, verify=self.__verify_ssl)
+        resp = self.__session.get(
+            url=self.__url + file, allow_redirects=False,
+            verify=self.__verify_ssl, headers={"User-Agent": self.__user_agent})
+
         self.__files_remote[file]["hash"] = self.hash(BytesIO(resp.content))
         self.__files_remote[file]["status"] = resp.status_code
         self.__request_count += 1
