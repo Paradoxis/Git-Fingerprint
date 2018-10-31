@@ -27,7 +27,7 @@ REQUIRES_PYTHON = '>=3.6.0'
 
 REQUIRED = [
     'GitPython==2.1.8',
-    'requests==2.18.4',
+    'requests==2.20.0',
     'tabulate==0.8.2',
     'axel==0.0.7',
     'progressbar2==3.34.3',
